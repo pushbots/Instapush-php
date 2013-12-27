@@ -1,4 +1,5 @@
 Instapush PHP Wrapper
+-----
 
 The [Instapush-php Wrapper] (http://www.instapush.im/) is
 a PHP wrapper arround Instapush service.
