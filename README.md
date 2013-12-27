@@ -8,9 +8,7 @@ This wrapper makes async request hence will minimally affect application speed (
 
 Usage
 -----
-
-The [examples][examples] are a good place to start. The minimal you'll need to
-have is:
+Basic example: 
 ```php
 $ip = new instaPush();
 $ip->App("52977dee128773e93de23cf5", "2ee88fa5bb3ebd8d3a23530715b6ccb8");
