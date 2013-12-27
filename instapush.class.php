@@ -88,10 +88,3 @@ function curl_post_async($url, $params)
     }
     
 }
-
-/*
-$ip = new instaPush();
-$ip->App("52977dee128773e93de23cf5", "2ee88fa5bb3ebd8d3a23530715b6ccb8");
-$ip->trackers("email", "test@ss.cc");
-$ip->Event("makan");
-$ip->Push();*/
