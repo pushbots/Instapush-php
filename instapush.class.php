@@ -14,21 +14,14 @@ class instaPush
     }
     
     /**
-     * @param   string  $appId          PushBots Applciation Id.
-     * @param   string  $appSecret  PushBots Application Secret.
+     * @param   string  $appId      InstaPush Applciation Id.
+     * @param   string  $appSecret  InstaPush Application Secret.
      */
     public function App($appId, $appSecret) {
         $this->appId = $appId;
         $this->appSecret = $appSecret;
         $this->apiURL = "api.instapush.im";
     }
-
-    /**
-     * sendRequest
-     * @param   string  $host   PushBots API.
-     * @param   string  $path   API Path.
-     */
-
 
 function curl_post_async($url, $params)
 {
@@ -82,9 +75,7 @@ function curl_post_async($url, $params)
      
     public function Push() {
 
-     //   $response = $this->sendRequest( 'POST' ,$this->apiURL, '/auth/notifyAmr/');
         $response = $this->curl_post_async("/php",$this->push);
-
         return $response;
     }
     
