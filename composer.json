@@ -1,0 +1,16 @@
+{
+    "name": "pushbots/instapush-php",
+    "description": "Instapush PHP Wrapper",
+    "authors": [
+    {
+        "name": "Amr Sobhy",
+        "email": "amrsobhy@gmail.com"
+    }
+    ],
+     "require": {
+        "php": ">=5.3.0"
+        },
+    "autoload": {
+        "classmap": ["instapush.class.php"]
+    }
+}
