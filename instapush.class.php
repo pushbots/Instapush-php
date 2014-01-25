@@ -14,14 +14,21 @@ class instaPush
     }
     
     /**
-     * @param   string  $appId      InstaPush Applciation Id.
-     * @param   string  $appSecret  InstaPush Application Secret.
+     * @param   string  $appId          PushBots Applciation Id.
+     * @param   string  $appSecret  PushBots Application Secret.
      */
     public function App($appId, $appSecret) {
         $this->appId = $appId;
         $this->appSecret = $appSecret;
         $this->apiURL = "api.instapush.im";
     }
+
+    /**
+     * sendRequest
+     * @param   string  $host   PushBots API.
+     * @param   string  $path   API Path.
+     */
+
 
 function curl_post_async($url, $params)
 {
@@ -33,8 +40,8 @@ function curl_post_async($url, $params)
 
     $parts=parse_url($url);
 
-    $fp = fsockopen('api.instapush.im', 
-        isset($parts['port'])?$parts['port']:80, 
+    $fp = fsockopen( $this->apiURL, 
+        isset($parts['port'])?$parts['port']:443, 
         $errno, $errstr, 30);
 
     $out = "POST ".$parts['path']." HTTP/1.1\r\n";
@@ -49,25 +56,6 @@ function curl_post_async($url, $params)
     fclose($fp);
 }
 
-
-    private function sendRequest($method, $host, $path ) {
-        $post_string = implode('&', $this->push);
-        $fp = fsockopen($host, 80,$errno, $errstr);
-        switch ($method) { 
-        case 'POST':
-            $out = "POST http://" . $host . $path." HTTP/1.1\r\n";
-            $out.= "Host: " . $host ."\r\n";
-            $out.= "X-INSTAPUSH-APPID: " . $this->appId ."\r\n";
-            $out.= "X-INSTAPUSH-APPSECRET: " . $this->appSecret ."\r\n";
-            $out.= "Content-Type: application/x-www-form-urlencoded\r\n";
-            $out.= "Content-Length: ".strlen($post_string)."\r\n";
-            $out.= "Connection: Close\r\n\r\n";
-            if (isset($post_string)) $out.= $post_string;
-            break;
-        }
-        fwrite($fp, $out);
-        fclose($fp);
-    }
     
     /**
      * Push Notification 
@@ -75,7 +63,9 @@ function curl_post_async($url, $params)
      
     public function Push() {
 
+     //   $response = $this->sendRequest( 'POST' ,$this->apiURL, '/auth/notifyAmr/');
         $response = $this->curl_post_async("/php",$this->push);
+
         return $response;
     }
     
@@ -88,3 +78,10 @@ function curl_post_async($url, $params)
     }
     
 }
+
+/*
+$ip = new instaPush();
+$ip->App("52977dee128773e93de23cf5", "2ee88fa5bb3ebd8d3a23530715b6ccb8");
+$ip->trackers("email", "test@ss.cc");
+$ip->Event("makan");
+$ip->Push();*/
