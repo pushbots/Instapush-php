@@ -339,7 +339,18 @@ class InstaPush
 		// only wait for the response in debug mode or if we explicitly want to be synchronous
 		if ($this->_debug() || !$this->_async) {
 			//@TODO Handle Server response
-			
+			$response = "";
+			while (!feof($socket)) {
+				$respLine = fgets($socket, 4096);
+				if (substr($respLine, 0, 1) === '{') $contentStarted = true;
+				if ($contentStarted) {
+      					$response .= $respLine;
+			        }
+			}
+    			$this->_log("response: " . $response);
+			if(strpos($response,"\"error\":false") === false){
+				$success = $response;
+			}
 		}
 
 		return $success;
