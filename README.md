@@ -4,7 +4,7 @@ Instapush PHP Wrapper
 The [Instapush PHP Wrapper] (http://www.instapush.im/) is
 a PHP wrapper for Instapush API.
 
-Instapush allows you to recieve push notifications about any trasnaction you care about in your web app immediatly using events based approach.
+Instapush allows you to recieve push notifications about any transaction you care about in your web app immediatly using events based approach.
 
 This wrapper makes async request hence will minimally affect application speed (if any).
 
